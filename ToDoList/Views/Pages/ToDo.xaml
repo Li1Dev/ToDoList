@@ -1,0 +1,58 @@
+﻿<Page x:Class="ToDoList.Views.Pages.ToDo"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ToDoList.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="370" d:DesignWidth="533"
+      Title="ToDo">
+    
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="210"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock 
+            Margin="15"
+            FontSize="30"
+            Text="New ToDo"
+            HorizontalAlignment="Left"/>
+        <StackPanel Grid.Column="0" Grid.Row ="1" Margin="15">
+            <TextBlock FontSize="14" 
+                   Text="Deadline" 
+                   Grid.Column="0" 
+                   Grid.Row ="1"
+                   />
+            <TextBlock Margin="0,50,0,0"
+                       FontSize="14" 
+                       Text="ToDo"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" Margin="15">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <DatePicker Width="150" Margin="0,0,20,0" SelectedDateFormat="Short" Text="{Binding ExecutionDate}"/>
+                <xctk:TimePicker Width="150" Text="{Binding ExecutionTime}"/>
+            </StackPanel>
+            <TextBox HorizontalAlignment="Center" Width="320" FontSize="14" Height="100" Text="{Binding ToDo}" Margin="0,50,0,0"/>
+        </StackPanel>
+        
+         <Button Height="50" 
+                 Grid.Row="2"
+                 Grid.ColumnSpan="2"
+                 Margin="15" 
+                 Width="200" 
+                 Background="MediumSeaGreen"
+                 FontSize="20"
+                 BorderBrush="Transparent"
+                 Content="Add New Task"
+                 VerticalAlignment="Top"
+                 Command="{Binding AddNewTask}"/>
+       
+    </Grid>
+</Page>
