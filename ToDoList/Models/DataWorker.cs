@@ -46,6 +46,15 @@ namespace ToDoList.Models
             }
         }
 
+        public static List<Task> GetAllNotDoneTask()
+        {
+            using (TaskContext db = new TaskContext())
+            {
+                var rezult = db.Tasks.Where(p => p.IsDone == false).ToList();
+                return rezult;
+            }
+        }
+
         //Add task
         public static string AddTask(DateTime createDateTime, bool isDone, string toDo, DateTime executionDateTime)
         {
