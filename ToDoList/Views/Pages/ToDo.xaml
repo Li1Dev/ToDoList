@@ -35,8 +35,8 @@
                        Text="ToDo"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="2" Margin="15">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <DatePicker Width="150" Margin="0,0,20,0" SelectedDateFormat="Short" Text="{Binding ExecutionDate}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{Binding}">
+                <DatePicker Width="150" Margin="0,0,20,0" SelectedDateFormat="Short"  Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ExecutionDate, UpdateSourceTrigger=PropertyChanged}"/>
                 <xctk:TimePicker Width="150" Text="{Binding ExecutionTime}"/>
             </StackPanel>
             <TextBox HorizontalAlignment="Center" Width="320" FontSize="14" Height="100" Text="{Binding ToDo}" Margin="0,50,0,0"/>

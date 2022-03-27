@@ -16,7 +16,7 @@ namespace ToDoList.ViewModel
 
         public AllTaskVM()
         {
-            SelectedDate = DateTime.Now;
+            SelectedDate = MainVM._SelectedDate;
             AllTasks = DataWorker.GetAllNotDoneTask(SelectedDate);
         }
 

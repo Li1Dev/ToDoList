@@ -41,7 +41,7 @@ namespace ToDoList.Models
         {
             using (TaskContext db = new TaskContext())
             {
-                var rezult = db.Tasks.Where(p => p.IsDone == false && p.ExecutionDateTime == date).ToList();
+                var rezult = db.Tasks.Where(p => p.IsDone == false && p.ExecutionDateTime.Date == date.Date).ToList();
                 return rezult;
             }
         }

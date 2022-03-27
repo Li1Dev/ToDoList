@@ -10,10 +10,10 @@ namespace ToDoList.ViewModel
     {
         public ToDoVM()
         {
-            executionDate = new DateOnly(DateTime.Now.Year , DateTime.Now.Month, DateTime.Now.Day);
+            ExecutionDate = DateTime.Now;
         }
-        private DateOnly executionDate;
-        public DateOnly ExecutionDate
+        private DateTime executionDate;
+        public DateTime ExecutionDate
         {
             get { return executionDate; }
             set
