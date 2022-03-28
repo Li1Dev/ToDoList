@@ -35,11 +35,12 @@
                        Text="ToDo"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="2" Margin="15">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DataContext="{Binding}">
-                <DatePicker Width="150" Margin="0,0,20,0" SelectedDateFormat="Short"  Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ExecutionDate, UpdateSourceTrigger=PropertyChanged}"/>
-                <xctk:TimePicker Width="150" Text="{Binding ExecutionTime}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <DatePicker Width="150" Margin="0,0,20,0"  SelectedDate="{Binding ExecutionDateTime, UpdateSourceTrigger=LostFocus}"/>
+                <xctk:TimePicker Width="150" Text="{Binding ExecutionDateTime, UpdateSourceTrigger=LostFocus}"/>
             </StackPanel>
-            <TextBox HorizontalAlignment="Center" Width="320" FontSize="14" Height="100" Text="{Binding ToDo}" Margin="0,50,0,0"/>
+            <CheckBox Margin="0,15,0,0" IsChecked="{Binding SetReminder}">Set a reminder</CheckBox>
+            <TextBox HorizontalAlignment="Center" Width="320" FontSize="14" Height="100" Text="{Binding ToDo}" Margin="0,25,0,0"/>
         </StackPanel>
         
          <Button Height="50" 

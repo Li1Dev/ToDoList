@@ -1,6 +1,5 @@
 ﻿using DevExpress.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.Windows.Input;
 using ToDoList.Models;
 
@@ -10,52 +9,10 @@ namespace ToDoList.ViewModel
     {
         public ToDoVM()
         {
-            ExecutionDate = DateTime.Now;
-        }
-        private DateTime executionDate;
-        public DateTime ExecutionDate
-        {
-            get { return executionDate; }
-            set
-            {
-                executionDate = value;
-                RaisePropertyChanged(() => ExecutionDate);
-            }
+            ExecutionDateTime = DateTime.Now;
         }
 
-        private TimeOnly executionTime;
-        public TimeOnly ExecutionTime
-        { 
-            get { return executionTime; }
-            set
-            {
-                executionTime = value;
-                RaisePropertyChanged(() => ExecutionTime);
-            }
-        }
-
-        private DateTime createDateTime;
-        public DateTime CreateDateTime 
-        {
-            get { return createDateTime; }
-            set 
-            {
-                createDateTime = value;
-                RaisePropertyChanged(() => CreateDateTime);
-            }
-        }
-
-        public bool isDone;
-        public bool IsDone 
-        {
-            get { return isDone; }
-            set
-            {
-                isDone = value;
-                RaisePropertyChanged(() => IsDone);
-            }
-        }
-
+        #region Fields and properties for the model
         private string toDo;
         public string ToDo 
         {
@@ -78,17 +35,17 @@ namespace ToDoList.ViewModel
             }
         }
 
-
-        private List<Task> allTasks = DataWorker.GetAllTask();
-        public List<Task> AllTasks
-        {
-            get { return allTasks; }
+        private bool setReminder;
+        public bool SetReminder 
+        { 
+            get { return setReminder; }
             set
-            {
-                allTasks = value;
-                RaisePropertyChanged(() => AllTasks);
+            { 
+                setReminder = value;
+                RaisePropertyChanged(() => SetReminder);
             }
         }
+        #endregion
 
         public ICommand AddNewTask
         {
@@ -96,13 +53,10 @@ namespace ToDoList.ViewModel
             {
                 return new DelegateCommand(() =>
                 {
-                    ExecutionDateTime = new DateTime(ExecutionDate.Year, ExecutionDate.Month, ExecutionDate.Day, ExecutionTime.Hour, ExecutionTime.Minute, 00);
-                    CreateDateTime = DateTime.Now;
-                    IsDone = false;
-                if (ToDo != null && ExecutionDateTime != null)
-                {
-                    DataWorker.AddTask(CreateDateTime, IsDone, ToDo, ExecutionDateTime);
-                }
+                    if (ToDo != null | ToDo == "")
+                    {
+                        DataWorker.AddTask(DateTime.Now, false, ToDo, ExecutionDateTime);
+                    }
                     ToDo = null;
                 });
             }
